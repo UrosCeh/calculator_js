@@ -50,8 +50,7 @@ body {
     border-bottom: 1px solid black;
 }
 
-#equation,
-#equation-result {
+.equation {
     text-align: start;
     background-color: white;
     outline: none;
