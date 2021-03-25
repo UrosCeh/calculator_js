@@ -1,22 +1,29 @@
-const number_buttons = document.getElementsByClassName("button-number")
-const arguments = document.getElementById("arguments")
+const number_buttons = document.getElementsByName("number")
+const equation = document.getElementById("equation")
 
 function display_function() {
     for(let i = 0; i<number_buttons.length; i++) {
         let btn = number_buttons[i]
         btn.addEventListener('click', () => {
-            console.log(btn.innerText)
+            print_to_equation(btn.innerText, equation)
         })
     }
 
 }
 display_function()
-// function nwtf() {
 
-//     number_buttons.forEach(btn => {
-//         btn.addEventListener('click', () => {
-//             console.log(btn.innerText)
-//         })
-//     });
-// }
-// nwtf()
+function print_to_equation(num, dest) {
+    let val = dest.value
+    if (val == "0") {
+        val = ""
+    }
+    if(num == "."){
+        if (!val.includes(".")) {
+            val += num
+        }
+    }
+    else {
+        val += num
+    }
+    dest.value = val
+}
