@@ -3,8 +3,8 @@ const operator_buttons = document.getElementsByName("operator")
 const display = document.getElementById("display")
 const display_result = document.getElementById("display-result")
 const calculator = document.getElementById("calculator")
-// var result = 0
 var values = new Array()
+var operator = ""
 
 
 for (let i = 0; i < number_buttons.length; i++) {
@@ -27,96 +27,68 @@ for (let i = 0; i < operator_buttons.length; i++) {
 }
 
 function display_number(value) {
-    if(display.value == "0") {
-        display.value = ""
-    }
-    if(value == ".") {
-        if(display.value.includes(value)){
-            return
-        }
+    if(value == "." && display.value.includes(value)) {
+        return
     }
     display.value += value
 }
 
 function operation_in_progress(action) {
-    if (action == "sum") {
-        sum()
-    }
-    if (action == "subtract") {
-        sub()
-    }
-    if (action == "multiply") {
-        mul()
-    }
-    if (action == "divide") {
-        div()
-    }
-    if (action == "equals") {
-        eq()
-    }
-    display.value = "0"
-}
-
-function sum() {
     let val = parseFloat(display.value)
     if (values.length == 0) {
-        values.push(val)
+        operator = action
+        calculate(val)
     }
     else {
-        let res = values[values.length-1] + val
-        values.push(res)
-        console.log(values)
+        calculate(val)
+        operator = action
     }
-    display_result.value = values[values.length-1]
+    display.value = ""
 }
 
-function sub() {
+function equals() {
     let val = parseFloat(display.value)
     if (values.length == 0) {
-        values.push(val)
+        return
     }
     else {
-        let res = values[values.length-1] - val
-        values.push(res)
-        console.log(values)
+        calculate(val)
+        display.value = display_result.value
+        display_result.value = ""
+        values = new Array()
     }
-    display_result.value = values[values.length-1]
-}
-
-function mul() {
-    let val = parseFloat(display.value)
-    if (values.length == 0) {
-        values.push(val)
-    }
-    else {
-        let res = values[values.length-1] * val
-        values.push(res)
-        console.log(values)
-    }
-    display_result.value = values[values.length-1]
-}
-
-function div() {
-    let val = parseFloat(display.value)
-    if (values.length == 0) {
-        values.push(val)
-    }
-    else {
-        let res = values[values.length-1] / val
-        values.push(res)
-        console.log(values)
-    }
-    display_result.value = values[values.length-1]
-}
-
-function eq() {
-    result = parseFloat(result) - parseFloat(values[values.length-1])
-    display_result.value = result
 }
 
 function backspace() {
     display.value = display.value.slice(0, -1)
-    if (display.value == "") {
-        display.value = "0"
+}
+
+function calculate(val) {
+    let res
+    if (Number.isNaN(val)) {
+        return
     }
+    if (values.length == 0) {
+        res = val
+    }
+    // if (values.length == 1) {
+    //     res = val
+    // }
+    else {
+        let num = values[values.length-1]
+        if (operator == "add") {
+            res = num + val
+        }
+        if (operator == "subtract") {
+            res = num - val
+        }
+        if (operator == "multiply") {
+            res = num * val
+        }
+        if (operator == "divide") {
+            res = num / val
+        }
+    }
+    values.push(res)
+    display_result.value = res
 }

@@ -57,6 +57,11 @@ body {
     border: none;
 }
 
+.equation-helper {
+    font-size: large;
+    color: gray;
+}
+
 #result {
     flex-grow: 1;
     display: flex;
