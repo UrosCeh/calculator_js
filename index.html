@@ -13,13 +13,12 @@
     <div id="container">
         <div id="calculator">
 
-            <div id="output" class="">
+            <div id="output" class="" data-first-value=0>
                 <div id="arguments">
-                    <input type="button" id="equation-first" class="equation" value="0"></input>
-                    <!-- <input type="button" id="equation-first" class="equation" value="0"></input> -->
+                    <input type="button" id="display" class="equation" value="0"></input>
                 </div>
                 <div id="result">
-                    <input type="button" id="equation-result" class="equation" value="0"></input>
+                    <input type="button" id="display-result" class="equation" value="0"></input>
                 </div>
             </div>
 
@@ -43,7 +42,7 @@
                     <div class="numbers-row">
                         <button class="button-number" name="number" value="0">0</button>
                         <button class="button-number" name="number" value=".">.</button>
-                        <button class="button-number" name="equals">=</button>
+                        <button class="button-number" onclick="equals()">=</button>
                     </div>
 
                     <!-- (÷ × − + = .) -->
@@ -51,16 +50,16 @@
                 <div id="operators" class="">
 
                     <button class="button-operator" onclick="backspace()">c</button>
-                    <button class="button-operator" name="div()">÷</button>
-                    <button class="button-operator" name="mul">×</button>
-                    <button class="button-operator" name="sub">−</button>
-                    <button class="button-operator" onclick="sum()">+</button>
+                    <button class="button-operator" name="operator" data-action="divide">÷</button>
+                    <button class="button-operator" name="operator" data-action="miltiply">×</button>
+                    <button class="button-operator" name="operator" data-action="subtract">−</button>
+                    <button class="button-operator" name="operator" data-action="sum">+</button>
 
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="main.js"></script>
+    <script src="newmain.js"></script>
 </body>
 </html>
