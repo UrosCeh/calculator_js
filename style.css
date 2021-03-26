@@ -99,10 +99,6 @@ body {
     font-size: x-large;
 }
 
-/* .button-number:active {
-    background-position: bottom;
-} */
-
 #operators {
     flex-grow: 1;
     display: flex;

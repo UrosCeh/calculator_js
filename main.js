@@ -71,9 +71,6 @@ function calculate(val) {
     if (values.length == 0) {
         res = val
     }
-    // if (values.length == 1) {
-    //     res = val
-    // }
     else {
         let num = values[values.length-1]
         if (operator == "add") {
