@@ -2,7 +2,6 @@ const number_buttons = document.getElementsByName("number")
 const operator_buttons = document.getElementsByName("operator")
 const display = document.getElementById("display")
 const display_result = document.getElementById("display-result")
-const calculator = document.getElementById("calculator")
 var values = new Array()
 var operator = ""
 
